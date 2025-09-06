@@ -10,7 +10,7 @@ This is a simple yet powerful **Anime Recommender System** built using **Python*
   Select an anime and get 5 similar anime suggestions based on synopsis, genres, themes, cast, and director.
 
 - 🧠 **NLP-powered Similarity Engine**  
-  Uses **TF-IDF** or **CountVectorizer** vectorization and **cosine similarity** on processed tags to generate recommendations.
+  Uses **TF-IDF** vectorization and **cosine similarity** on processed tags to generate recommendations.
 
 ---
 
