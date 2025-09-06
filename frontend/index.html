@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Recommendation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Anime Recommendation System</h1>
+    <form id="animeForm">
+        <label for="anime">Enter an anime:</label>
+        <input type="text" id="anime" name="anime" required>
+        <button type="submit">Recommend</button>
+    </form>
+    <div id="recommendations"></div>
+
+    <script>
+        const form = document.getElementById('animeForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const anime = document.getElementById('anime').value;
+            const res = await fetch('http://localhost:5000/recommend', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({anime})
+            });
+            const data = await res.json();
+            document.getElementById('recommendations').innerHTML = 
+                '<h2>Recommendations:</h2>' + '<ul>' + data.recommendations.map(a => `<li>${a}</li>`).join('') + '</ul>';
+        });
+    </script>
+</body>
+</html>
